@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Connexion</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+    </head>
+    <body>
+        <div class="login-container">
+            <h2>Connexion</h2>
+            <form method="POST" action="/">
+                <div class="message">{{ msg }}</div>
+                <input type="text" name="username" placeholder="Nom d'utilisateur" required>
+                <input type="password" name="password" placeholder="Mot de passe" required>
+                <input type="submit" value="Login">
+            </form>
+        </div>
+    </body>
+</html>
