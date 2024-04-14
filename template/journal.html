@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Intima - Journal Intime</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/journal.css') }}">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Intima</h1>
+      <nav>
+        <ul>
+          <li><a href="../main.html">Accueil</a></li>
+          <li><a href="#entries">A propos</a></li>
+          <li><a href="#new-entry">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section id="about" class="section">
+    <div class="container">
+      <h2>À propos de Intima</h2>
+      <p>Intima est votre espace personnel pour écrire, réfléchir et explorer vos pensées les plus intimes. Avec un design minimaliste et une interface conviviale, Intima vous permet de capturer vos moments les plus précieux en toute simplicité.</p>
+    </div>
+  </section>
+
+  <section id="entries" class="section">
+    <div class="container">
+      <h2>Mes Dernières Entrées</h2>
+      <!-- Insert dynamic content for entries here -->
+    </div>
+  </section>
+
+  <section id="new-entry" class="section">
+    <div class="container">
+      <h2>Nouvelle Entrée</h2>
+      <form action="#">
+        <textarea placeholder="Écrivez votre nouvelle entrée ici..."></textarea>
+        <button type="submit">Enregistrer</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2024 Intima. Tous droits réservés.</p>
+    </div>
+  </footer>
+</body>
+</html>
