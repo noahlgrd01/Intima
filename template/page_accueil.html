@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Intima - Journal Intime</title>
+        <title>Accueil</title>
         <link rel="stylesheet" href="{{ url_for('static', filename='css/page_accueil.css') }}">
     </head>
     <body>
@@ -11,8 +11,8 @@
             <h1>Intima</h1>
             <nav>
                 <ul>
-                    <li><a href="#">Accueil</a></li>
-                    <li><a href="./journal/main.html">Journal</a></li>
+                    <li><a href="{{ url_for('page_accueil') }}">Accueil</a></li>
+                    <li><a href="{{ url_for('journal') }}">Journal</a></li>
                     <li><a href="#">À propos</a></li>
                     <li><a href="#">Contact</a></li>
                 </ul>
