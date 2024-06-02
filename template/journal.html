@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Accueil</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/journal.css') }}">
 </head>
 <body>
@@ -29,8 +30,12 @@
 
   <section id="entries" class="section">
     <div class="container">
-      <h2>Mes Dernières Entrées</h2>
-      <!-- Insert dynamic content for entries here -->
+      <h2>Ma Dernière Entrée</h2>
+      <div class="tbl-content">
+        <h2>{{title}}</h2>
+        <p>{{content}}<p>
+        <p>{{date}}</p>
+      </div>
     </div>
   </section>
 
@@ -38,7 +43,8 @@
     <div class="container">
       <h2>Nouvelle Entrée</h2>
       <form action="#">
-        <textarea placeholder="Écrivez votre nouvelle entrée ici..."></textarea>
+        <textarea placeholder="Titre"></textarea>
+        <textarea placeholder="Contenu"></textarea>
         <button type="submit">Enregistrer</button>
       </form>
     </div>
