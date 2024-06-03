@@ -23,13 +23,20 @@
         <h2>Bienvenue dans votre journal intime en ligne</h2>
         <p>Exprimez-vous en toute liberté, sans jugement. Intima est là pour vous.</p>
     </section>
-    <section class="entries">
-        <article>
-            <h3>Titre de l'entrée</h3>
-            <p>Contenu de l'entrée...</p>
-            <a href="#">Lire la suite</a>
-        </article>
-        <!-- Ajoutez d'autres articles ici pour représenter les différentes entrées -->
+    <section id="entries" class="section">
+        <div class="container">
+            {% if entries %}
+                {% for entry in entries %}
+                <div class="tbl-content">
+                    <h2>{{ entry[0] }}</h2>
+                    <p>{{ entry[1] }}</p>
+                    <p>{{ entry[2] }}</p>
+                </div>
+                {% endfor %}
+            {% else %}
+                <p>Aucune entrée trouvée.</p>
+            {% endif %}
+        </div>
     </section>
     <footer>
         <p>&copy; 2024 Intima - Tous droits réservés</p>

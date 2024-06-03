@@ -30,3 +30,23 @@ footer {
     text-align: center;
     padding: 20px;
 }
+
+.tbl-content {
+    border: 2px solid #333;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    max-width: 1300px;
+    width: 100%;
+    margin: 20px auto;
+    transition: transform 0.3s ease, background-color 0.9s ease, border-color 0.9s ease, color 0.9s ease; /* Transition séparée pour les propriétés */
+    transform-origin: top left;
+}
+
+.tbl-content:hover {
+    color: #fff;
+    transform: scale(1.05);
+    border: 2px solid #dd1ee4;
+    background-color: #f3c9c9;
+}

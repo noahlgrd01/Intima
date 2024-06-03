@@ -51,8 +51,10 @@ def page_accueil():
     Valeur de retour:
         (template html)
     """
+    entries = []
     token = session.get('token')
-    return render_template('page_accueil.html', token=token)
+    entries = entries + getEntreeJournal(token)
+    return render_template('page_accueil.html', token=token, entries=entries)
 
 @app.route('/journal/<int:tokenUtilisateur>')
 def journal(tokenUtilisateur):
@@ -89,15 +91,6 @@ def getDerniereEntree(tokenUtilisateur):
         return None
 
 def getEntreeJournal(tokenUtilisateur):
-    """
-    Action: Renvoie toutes les entrées du journal intime créées par l'utilisateur
-
-    Paramètres d'entrée:
-        tokenUtilisateur (int)
-
-    Valeur de retour:
-        listeEntrees (list[tuple])
-    """
     listeEntrees = []
     co = sqlite3.connect("db/entry.db")
     curs = co.cursor()
@@ -140,7 +133,6 @@ def creerNouvelleEntree():
             co.close()
         return redirect(url_for('journal', tokenUtilisateur=tokenUti))
     else:
-        print("Il manque des valeurs")
         return redirect(url_for('journal', tokenUtilisateur=tokenUti))
 
 # When the Python interpreter runs, this line executes the web app with the attributes below
