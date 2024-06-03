@@ -14,8 +14,8 @@
       <nav>
         <ul>
           <li><a href="{{ url_for('page_accueil') }}">Accueil</a></li>
-          <li><a href="#entries">A propos</a></li>
-          <li><a href="#new-entry">Contact</a></li>
+          <li><a>A propos</a></li>
+          <li><a>Contact</a></li>
         </ul>
       </nav>
     </div>
@@ -42,9 +42,9 @@
   <section id="new-entry" class="section">
     <div class="container">
       <h2>Nouvelle Entrée</h2>
-      <form action="#">
-        <textarea placeholder="Titre"></textarea>
-        <textarea placeholder="Contenu"></textarea>
+      <form action="/creerNouvelleEntree" method="post">
+        <textarea id="title" placeholder="Titre"></textarea>
+        <textarea id="content" placeholder="Contenu"></textarea>
         <button type="submit">Enregistrer</button>
       </form>
     </div>

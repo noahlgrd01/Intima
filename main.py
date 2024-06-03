@@ -1,8 +1,10 @@
 from flask import Flask, render_template, request, redirect, url_for, session
+import datetime
+import time
 import sqlite3
 
 # Initialize the Flask web app and assign a secret key
-app = Flask(__name__, template_folder='template')
+app = Flask(__name__, template_folder='templates')
 app.secret_key = "DvgcehifjjbzdDF>EUGIHF"
 
 @app.route('/', methods=['GET', 'POST'])
@@ -107,6 +109,39 @@ def getEntreeJournal(tokenUtilisateur):
     finally:
         co.close()
     return listeEntrees
+
+@app.route('/creerNouvelleEntree', methods=['POST'])
+def creerNouvelleEntree():
+    """
+    Action: Créer une nouvelle entrée au journal en insérant les données dans la base de données
+
+    Paramètres d'entrée:
+        Aucun
+
+    Valeur de retour:
+        Aucun
+    """
+    titre = request.form['title']
+    contenu = request.form['content']
+    tokenUti = session.get('token')
+    dateActuelle = datetime.datetime.now().strftime("%Y-%m-%d")
+
+    if titre and contenu:
+        co = sqlite3.connect('db/entry.db')
+        curs = co.cursor()
+        try:
+            curs.execute("SELECT id FROM entry ORDER BY id DESC LIMIT 1")
+            dernierId = curs.fetchone()[0] + 1 if curs.fetchone() else 1
+            curs.execute("INSERT INTO entry VALUES (?,?,?,?,?)", (dernierId, tokenUti, titre, contenu, dateActuelle))
+            co.commit()
+        except sqlite3.Error as e:
+            print("Erreur SQLite:", e)
+        finally:
+            co.close()
+        return redirect(url_for('journal', tokenUtilisateur=tokenUti))
+    else:
+        print("Il manque des valeurs")
+        return redirect(url_for('journal', tokenUtilisateur=tokenUti))
 
 # When the Python interpreter runs, this line executes the web app with the attributes below
 if __name__ == "__main__":
